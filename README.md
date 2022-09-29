@@ -23,3 +23,6 @@ Abajo de todo hay un botón "click aca" para ver datos "acerca de mi" en la pág
 
 ### Navbar ###
 La página cuenta con un navbar funcionando en la parte de arriba.
+
+
+Se cumplen todas las consignas listadas en: https://docs.google.com/document/d/1q-Ksh_2g-y2pQoDF-onKcJvHyX11JjZ7l1bEITMD0GE
