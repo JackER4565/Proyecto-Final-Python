@@ -38,9 +38,9 @@
 </section>
 {% endif %}
 
-<section class="section" id="blog" style="min-height: 500px;">
+<section class="section" id="users" style="min-height: 250px;">
     <div class="container">
-        <h3 class="section-title">Blogs actuales</h3>
+        <h3 class="section-title">Usuarios Actuales</h3>
 
         <div id="owl-testmonial" class="owl-carousel owl-theme mt-4">
             {% for item in bobjects %}
@@ -78,7 +78,50 @@
     </div>
 </section>
 
+<section class="section" id="blog">
 
+    <div class="container mb-3">
+        <h3 class="section-title mb-5">Nuestro Blog</h3>
+        <div id="owl-portfolio" class="owl-carousel owl-theme mt-4">
+            {% for item in bobjects %}
+        <div class="blog-wrapper">
+            <div class="img-wrapper">
+                <img src="{{ item.imagen.url }}" alt="">
+                <div class="date-container">
+                    <h6 class="day">{{item.fecha|date:"m"}}</h6>
+                    <h6 class="mun">{{item.fecha|date:"M"}}</h6> 
+                </div>
+            </div>
+            <div class="txt-wrapper">
+                <h4 class="blog-title">{{ item.titulo }}</h4>
+                <p>{{ item.texto_corto }}</p>
+
+                <a href="{% url 'single_view' item.id %}" class="badge badge-info">Leer más</a>
+                {% if user.is_authenticated and user.get_username == item.autor %}
+                    <a href="{% url 'edit_blog' item.id %}" class="badge badge-secondary">Editar</a>
+                    <a href="{% url 'delete_blog' item.id %}" class="badge badge-danger">Borrar</a>
+                    {% endif %}   
+
+                <h6 class="blog-footer">
+                    <a href="{% url 'perfil' item.autor %}"><i class="ti-user"></i> {{ item.autor }} </a> |
+                    <a href="javascript:void(0)"><i class="ti-thumb-up"></i> 213 </a> |
+                    <a href="javascript:void(0)"><i class="ti-comments"></i> 123</a>
+                </h6>
+            </div>
+        </div>
+        {% empty %}
+        <div class="blog-wrapper">
+            <div class="txt-wrapper">
+                <h4 class="blog-title">No hay blogs todavia.</h4>
+    
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+</section>
 
 <section id="about" class="section pb-0">
 
